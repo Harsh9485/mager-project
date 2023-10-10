@@ -9,8 +9,8 @@ const listingSchema = new Schema({
     description : String,
     image : {
         type :String,
-        default: "https://www.istockphoto.com/photo/paper-house-with-exclamation-point-inside-conceptual-image-gm655282274-119193927?phrase=default+house+logo",
-        set : (v) => v === "" ? "https://www.istockphoto.com/photo/paper-house-with-exclamation-point-inside-conceptual-image-gm655282274-119193927?phrase=default+house+logo" : v,
+        default: "https://www.logolynx.com/images/logolynx/df/dfc95540c225d6841233d7f74c9a2a11.png",
+        set : (v) => v === "" ? "https://www.logolynx.com/images/logolynx/df/dfc95540c225d6841233d7f74c9a2a11.png" : v,
     },
     price : Number,
     location : String,

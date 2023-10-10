@@ -1,5 +1,13 @@
+body {
+    font-family:sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .cantanr{
     margin-left: 4rem;
+    flex: 1;
 }
 
 /* navbar */
