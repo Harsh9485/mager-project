@@ -26,19 +26,6 @@ async function main(){
     await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust")
 }
 
-// app.get("/testListing",async(req,res) => {
-//     let samplListing = new Listing({
-//         title: "my new villa",
-//         description: "by the beach",
-//         price: 1200,
-//         location: "calangute, Goa",
-//         country: "india"
-//     });
-
-//     await samplListing.save();
-//     res.send("successful");
-// })
-
 // index app 
 app.get("/listings",async(req,res) => {
     const allListings = await Listing.find({});

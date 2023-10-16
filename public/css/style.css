@@ -96,3 +96,21 @@ body {
     opacity: 0.1;
     background-color: white;
 }
+
+/* show page */
+.show-image{
+    height: 70vh;
+    
+}
+.title{
+    font-size: 1.7rem;
+}
+.lis-det{
+    font-size: 1.2rem;
+}
+.E-D-btn{
+    display: flex;
+}
+.E-D-btn button{
+    margin-left: 1rem;
+}
