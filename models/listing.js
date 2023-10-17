@@ -18,4 +18,4 @@ const listingSchema = new Schema({
 });
 
 const listing = mongoose.model("listing",listingSchema);
-module.exports = listing
+module.exports = listing;
