@@ -8,10 +8,16 @@
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" placeholder="Enter title" name="listing[title]" class="form-control" required>
+                <div class="invalid-feedback">
+                    Please provide a title.
+                </div>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea type="text" placeholder="Enter description" name="listing[description]" class="form-control" required> </textarea>
+                <div class="invalid-feedback">
+                    Enter description please
+                </div>
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">image URL/Link</label>
@@ -21,15 +27,24 @@
                 <div class="mb-3 col-md-4">
                     <label for="price" class="form-label">Price</label>
                     <input type="number" placeholder="Enter price" name="listing[price]" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please provide a price.
+                    </div>
                 </div>
                 <div class="mb-3 col-md-8">
                     <label for="country" class="form-label">Country</label>
                     <input type="text" placeholder="Enter country" name="listing[country]" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please provide a country.
+                    </div>
                 </div>
             </div>       
-                <div class="mb-3">
+            <div class="mb-3">
                 <label for="location" class="form-label">location</label>
                 <input type="text" placeholder="Enter location" name="listing[location]" class="form-control" required>
+                <div class="invalid-feedback">
+                    please provide a location.
+                </div>
             </div>     
             <br>
             <button class="btn btn-dark">Add</button>
