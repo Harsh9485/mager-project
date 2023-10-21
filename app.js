@@ -7,7 +7,8 @@ const methodOverride = require("method-override");
 const listing = require("./models/listing.js");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsyc.js");
-const ExpressErroe = require("./utils/ExpressError.js");
+const ExpressError = require("./utils/ExpressError.js");
+const {listingSchema} = require("./schema.js")
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname,"views"));
@@ -27,6 +28,15 @@ main().then(() => {
 async function main(){
     await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust")
 };
+
+function validateListing(req, res, next) {
+    let {error} = listingSchema.validate(req.body);
+    if(error) {
+        throw new ExpressError(400, error);
+    }else{
+        next();
+    }
+}
 
 // index app 
 app.get("/listings",wrapAsync(async(req,res) => {
@@ -59,10 +69,8 @@ app.get("/listings/:id/edit",wrapAsync(async(req,res) =>  {
 );
 
 // Add new listing in db / create root
-app.post("/listings",wrapAsync(async(req,res,next) => { 
-    if(!req.body.listing) {
-        throw new ExpressErroe(400, "send valid data for listing");
-    }
+app.post("/listings", validateListing, wrapAsync(async(req,res,next) => { 
+   
     let newlisting = Listing(req.body.listing);
     await newlisting.save();
     res.redirect("/listings");
@@ -70,7 +78,7 @@ app.post("/listings",wrapAsync(async(req,res,next) => {
 );
 
 // update root
-app.put("/listings/:id",wrapAsync(async(req,res) => {
+app.put("/listings/:id", validateListing, wrapAsync(async(req,res) => {
     let id = req.params.id;
     await Listing.findByIdAndUpdate(id,{...req.body.listing});
     res.redirect(`/listings`);
@@ -98,7 +106,8 @@ app.all("*", (req, res, next) => {
 
 app.use((err,req,res,next) => {
     let  {status=500, message} = err;
-    res.status(status).send(message);
+    // res.status(status).send(message);   
+    res.status(status).render("error.ejs",{message});
 });
 
 app.listen(8080,() => {
